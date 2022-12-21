@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 from sklearn.svm import SVC
 from sklearn.preprocessing import LabelEncoder
+from sklearn.neighbors import KNeighborsClassifier
 
 data = pickle.loads(open('encodings.pkl', "rb").read())
 
@@ -15,15 +16,19 @@ y_raw = data['names']
 
 le = LabelEncoder()
 y = le.fit_transform(y_raw)
+print(le.classes_)
+# save the labels in a file 
+f = open('labels.pkl', "wb")
+f.write(pickle.dumps(le.classes_))
+f.close()
 
-print(y)
+model = KNeighborsClassifier(n_neighbors=6)
+model.fit(X, y)
 
-# model = SVC(kernel='linear', probability=True)
-# model.fit(X, y)
+accuracy = model.score(X, y)
+print(f'Accuracy: {accuracy}')
 
-
-# accuracy = model.score(X, y)
-
-
-
-
+#save the model to disk
+f = open('model.pkl', "wb")
+f.write(pickle.dumps(model))
+f.close()
