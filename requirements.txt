@@ -6,3 +6,4 @@ imutils==0.5.2
 numpy==1.16.2
 Pillow==6.0.0
 opencv-python
+numpy

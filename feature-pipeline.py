@@ -8,7 +8,7 @@ import os
 import argparse
 
 
-dataset = './dataset/' # path to input dataset directory 
+dataset = './dataset' # path to input dataset directory 
 encodings_file = './encodings.pkl' #path to output encodings file
 detection_method = 'hog'
 
@@ -18,6 +18,7 @@ knownNames = []
 s = time.time()
 
 for (i, imagePath) in enumerate(imagePaths):
+    print(imagePath)
     name = imagePath.split(os.path.sep)[-2] 
     print(f"processing image [{name}] {i+1}/{len(imagePaths)}")
     images = []
