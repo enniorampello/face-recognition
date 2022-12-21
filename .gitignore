@@ -1,1 +1,3 @@
 dataset/
+venv/
+client_secret*
