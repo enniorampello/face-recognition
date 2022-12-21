@@ -22,7 +22,7 @@ f = open('labels.pkl', "wb")
 f.write(pickle.dumps(le.classes_))
 f.close()
 
-model = KNeighborsClassifier(n_neighbors=6)
+model = KNeighborsClassifier(n_neighbors=3)
 model.fit(X, y)
 
 accuracy = model.score(X, y)

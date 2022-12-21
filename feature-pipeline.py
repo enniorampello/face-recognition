@@ -59,7 +59,7 @@ if __name__ == "__main__":
         print(f"processing image [{name}] {i+1}/{len(imagePaths)}")
     
         for l in images:
-            boxes = [(0, l.shape[1], l.shape[0], 0)]
+            boxes = face_recognition.face_locations(l, model='hog')
             encodings = face_recognition.face_encodings(l, boxes)
 
             # creating the training set
