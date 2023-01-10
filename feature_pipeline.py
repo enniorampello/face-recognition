@@ -43,7 +43,7 @@ def augment_image(file_path):
     return images
 
 
-if __name__ == "__main__":
+def preprocess():
 
     dataset = './dataset' # path to input dataset directory
     encodings_file = './encodings.pkl' #path to output encodings file
@@ -75,3 +75,6 @@ if __name__ == "__main__":
     f.close()
 
     # replace the above few lines with the script to upload this to hopsworks
+
+if __name__ == '__main__':
+    preprocess()

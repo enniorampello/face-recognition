@@ -1,3 +1,5 @@
 dataset/
 venv/
-client_secret*
+credentials.json
+cmake*
+__pycache__/
