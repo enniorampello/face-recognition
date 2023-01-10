@@ -4,7 +4,7 @@ import pickle
 import argparse
 import cv2
 from sklearn.neighbors import KNeighborsClassifier
-import gradio as gr
+import gradio_app as gr
 import numpy as np
 
 
