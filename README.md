@@ -23,3 +23,4 @@ The users can upload a picture of a person in the [Hugging Face space](https://w
 - The training pipeline then makes use of the encoding file and trains a knn classifier and stores the model in the file `./model.pkl`. The training file also stores the labels (before using a label encoder) in the file 'labels.pkl'
 - The inference pipeline makes use of all these files and runs the inference in the gradio UI
 
+[//]: comment
