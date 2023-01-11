@@ -25,7 +25,7 @@ def upload_to_bucket(client, bucket_name, file_name, object_name):
         return False
 
 
-def image_upload(name, img):
+def image_upload(_, img, name):
     file_id = random.randint(0, 1000000)
     
     if os.path.exists(f"./dataset/{name}") == False:
@@ -51,8 +51,8 @@ gr.Interface(
         # Hello!! Enter your first name and upload one picture of your face.
         ## The face recognition model will be retrained with the knowledge you gave it of your face.
         """),
-        gr.inputs.Textbox(placeholder="write your name here..."), 
-        gr.inputs.Image(type="pil", label="Input")
+        gr.Webcam(source="webcam", type="pil", label="Upload a beautiful picture of yourself."),
+        gr.Textbox(placeholder="write your name here...", label="Your name.")
     ], 
     outputs="text"
-    ).launch(share=True)
+    ).launch(server_name="0.0.0.0")

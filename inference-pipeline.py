@@ -8,7 +8,7 @@ import gradio as gr
 import numpy as np
 
 
-def inf(image):
+def inf(_, image):
     # input_image = 'multiple.jpg'
     # encodings_file = 'encodings.pkl'
     detection_method = 'hog'
@@ -65,5 +65,5 @@ demo = gr.Interface(
     "image",
     live=True
 )
-demo.launch(share=True)
+demo.launch(server_name="0.0.0.0", share=True)
 
