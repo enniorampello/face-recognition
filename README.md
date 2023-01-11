@@ -20,6 +20,9 @@ Once the training pipeline is called, the embeddings are taken from the bucket, 
 Our inference pipeline is in real-time, hence the Gradio UI shows the live webcam with all the predictions on each face. Note: This is not a very well trained model, and hence there would be several false positives. 
 
 
+## Gradio public links:
+- The app to upload an image is provided [here](http://34.72.213.0:7861)
+- The app to run the real-time inference is [here](http://34.72.213.0:7860)
 ## Project structure
 
 - The dataset is stored in `./dataset/<first name of the person>`.
