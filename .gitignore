@@ -1,5 +1,10 @@
-dataset/
 venv/
 credentials.json
 cmake*
 __pycache__/
+.inference*
+encodings.pkl
+labels.pkl
+model.pkl
+dlib
+flagged

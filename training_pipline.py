@@ -6,9 +6,15 @@ from sklearn.svm import SVC
 from sklearn.preprocessing import LabelEncoder
 from sklearn.neighbors import KNeighborsClassifier
 
-def train():
 
-    data = pickle.loads(open('encodings.pkl', "rb").read())
+
+def train(storage_client, bucket_name, embeddings_file):
+
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(embeddings_file)
+    blob.download_to_filename(embeddings_file)
+
+    data = pickle.loads(open(embeddings_file, "rb").read())
 
     # train a classification model on these embeddings
     # use the model to make predictions on the test data

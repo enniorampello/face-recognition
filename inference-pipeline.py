@@ -4,7 +4,7 @@ import pickle
 import argparse
 import cv2
 from sklearn.neighbors import KNeighborsClassifier
-import gradio_app as gr
+import gradio as gr
 import numpy as np
 
 
@@ -55,11 +55,15 @@ def inf(image):
     return image
 
 
-demo = gr.Interface(
-    inf, 
-    gr.Image(source="webcam", streaming=True), 
+demo = gr.Interface(    
+    inf,
+    [
+    gr.Markdown("""
+    ## Welcome to the face recognition software !!!
+    """),
+    gr.Image(source="webcam", streaming=True)], 
     "image",
     live=True
 )
-demo.launch()
+demo.launch(share=True)
 

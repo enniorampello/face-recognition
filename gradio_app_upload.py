@@ -8,7 +8,10 @@ from google.oauth2 import service_account
 from feature_pipeline import preprocess
 from training_pipline import train
 
-use_bucket = False
+use_bucket = True
+
+creds = service_account.Credentials.from_service_account_file("credentials.json")
+client = storage.Client(credentials=creds)
 
 def upload_to_bucket(client, bucket_name, file_name, object_name):
     try:
@@ -30,13 +33,13 @@ def image_upload(name, img):
     
     img.save(f"dataset/{name}/{name}_{file_id}.jpg")
 
-    if use_bucket:
-        creds = service_account.Credentials.from_service_account_file("credentials.json")
-        client = storage.Client(credentials=creds)
-        upload_to_bucket(client, "bucket-faces", f"./dataset/{name}/{name}_{file_id}.jpg", f"{name}/{name}_{file_id}.jpg")
+    embeddings_filename = preprocess()
 
-    preprocess()
-    train()
+    if use_bucket:
+        upload_to_bucket(client, "bucket-faces", f"./dataset/{name}/{name}_{file_id}.jpg", f"{name}/{name}_{file_id}.jpg")
+        upload_to_bucket(client, "bucket-embeddings", embeddings_filename, embeddings_filename)
+
+    train(client, "bucket-embeddings", embeddings_filename)
 
     return "Model retrained!"
         
@@ -44,6 +47,10 @@ def image_upload(name, img):
 gr.Interface(
     image_upload, 
     [
+        gr.Markdown("""
+        # Hello!! Enter your first name and upload one picture of your face.
+        ## The face recognition model will be retrained with the knowledge you gave it of your face.
+        """),
         gr.inputs.Textbox(placeholder="write your name here..."), 
         gr.inputs.Image(type="pil", label="Input")
     ], 

@@ -44,7 +44,6 @@ def augment_image(file_path):
 
 
 def preprocess():
-
     dataset = './dataset' # path to input dataset directory
     encodings_file = './encodings.pkl' #path to output encodings file
 
@@ -73,6 +72,8 @@ def preprocess():
     f = open(encodings_file, "wb")
     f.write(pickle.dumps(data))
     f.close()
+
+    return encodings_file
 
     # replace the above few lines with the script to upload this to hopsworks
 
