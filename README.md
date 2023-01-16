@@ -21,8 +21,8 @@ Our inference pipeline is in real-time, hence the Gradio UI shows the live webca
 
 
 ## Gradio public links:
-- The app to upload an image is provided [here](http://34.72.213.0:7861)
-- The app to run the real-time inference is [here](http://34.72.213.0:7860)
+- The app to upload an image is provided [here](https://1d5d09cf-5ef3-47f6.gradio.live/)
+- The app to run the real-time inference is [here](https://c3c30239-c028-48a3.gradio.live/)
 ## Project structure
 
 - The dataset is stored in `./dataset/<first name of the person>`.
